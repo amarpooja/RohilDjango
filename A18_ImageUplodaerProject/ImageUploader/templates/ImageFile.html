@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container ct">
+        <div class="bgcolor mt-5  py-4 text-center">
+                <h1> Upload Your Image </h1>
+                <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                    {% for fm in form %}
+                        {{ fm.label_tag }}{{fm}} 
+                    {% endfor%}
+                    <br><br>
+                <input type="submit" value="Submit" class="btn btn-success">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="row mt-3">
+            {% for image in images %}
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img src="{{image.image}}" alt="" class="myimg">
+                       <div class="">
+                        <small>{{image.desc}}   {{image.date}}</small>
+                       </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+
+
+    
+
+    
+</body>
+</html>
